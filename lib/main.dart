@@ -1,3 +1,5 @@
 import 'imports.dart';
 
-void main() => runApp(MainApp());
+void main() async {
+  runApp(MainApp());
+}

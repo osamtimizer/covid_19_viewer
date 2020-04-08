@@ -7,6 +7,7 @@ export 'package:provider/provider.dart';
 
 // lib
 export 'main_app.dart';
+export 'constants.dart';
 export 'models/covid19.dart';
 export 'models/transition.dart';
 export 'models/carrier.dart';
