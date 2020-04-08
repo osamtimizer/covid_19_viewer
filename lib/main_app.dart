@@ -1,9 +1,14 @@
+import 'package:http/http.dart' as http;
 import 'imports.dart';
 
 class MainApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    final request = Covid19Request(client: http.Client());
+    request.fetch().then((value) {
+      print(value);
+    });
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
