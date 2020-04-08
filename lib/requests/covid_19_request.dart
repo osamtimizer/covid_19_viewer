@@ -11,7 +11,6 @@ class Covid19Request {
 
   Future<Covid19> fetch() async {
     final response = await this.client.get(uri);
-    print(json.decode(response.body));
-    print("decoded");
+    return Covid19.fromJson(json.decode(response.body));
   }
 }
