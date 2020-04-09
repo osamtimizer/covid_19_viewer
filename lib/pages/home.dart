@@ -22,22 +22,23 @@ class Home extends StatelessWidget {
     return AspectRatio(
       aspectRatio: 1,
       child: charts.TimeSeriesChart(
-        _createSeries(covid19.transition.carriers),
+        _createSeries(covid19.transition.carriers, "carriers"),
         animate: true,
+        defaultRenderer: charts.BarRendererConfig<DateTime>(),
       ),
     );
   }
 
-  static List<charts.Series<Carrier, DateTime>> _createSeries(
-      List<Carrier> carriers) {
-    final target = carriers.sublist(carriers.length - 14, carriers.length);
+  static List<charts.Series<ChartSeries, DateTime>> _createSeries(
+      List<ChartSeries> chartSeries, String id) {
+    final target =
+        chartSeries.sublist(chartSeries.length - 28, chartSeries.length);
     return [
-      charts.Series<Carrier, DateTime>(
-        id: 'Carrier',
+      charts.Series<ChartSeries, DateTime>(
+        id: id,
         colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
-        domainFn: (carrier, count) =>
-            DateTime(carrier.year, carrier.month, carrier.day),
-        measureFn: (carrier, count) => carrier.count,
+        domainFn: (_chartSeries, count) => _chartSeries.date(),
+        measureFn: (_chartSeries, count) => _chartSeries.count,
         data: target,
       )
     ];
