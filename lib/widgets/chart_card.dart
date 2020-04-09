@@ -1,0 +1,20 @@
+import 'package:covid_19_viewer/imports.dart';
+import 'package:charts_flutter/flutter.dart' as charts;
+
+class ChartCard extends StatelessWidget {
+  final List<ChartSeries> chartSeries;
+  final String id;
+  ChartCard({@required this.chartSeries, this.id = ""});
+
+  @override
+  Widget build(BuildContext context) {
+    return AspectRatio(
+      aspectRatio: 1,
+      child: charts.TimeSeriesChart(
+        ChartUtil.createSeries(chartSeries, id),
+        animate: true,
+        defaultRenderer: charts.BarRendererConfig<DateTime>(),
+      ),
+    );
+  }
+}

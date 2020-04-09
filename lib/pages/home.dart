@@ -19,13 +19,6 @@ class Home extends StatelessWidget {
     if (covid19 == null) {
       return CircularProgressIndicator();
     }
-    return AspectRatio(
-      aspectRatio: 1,
-      child: charts.TimeSeriesChart(
-        ChartUtil.createSeries(covid19.transition.carriers, "carriers"),
-        animate: true,
-        defaultRenderer: charts.BarRendererConfig<DateTime>(),
-      ),
-    );
+    return ChartCard(chartSeries: covid19.transition.carriers);
   }
 }
