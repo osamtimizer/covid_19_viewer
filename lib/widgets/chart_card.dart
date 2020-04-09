@@ -8,6 +8,26 @@ class ChartCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return Container(
+        child: Column(
+      children: <Widget>[
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Text(id),
+            Text("累計: " + chartSeries.last.count.toString()),
+          ],
+        ),
+        Stack(
+          children: <Widget>[
+            _chart(context),
+          ],
+        ),
+      ],
+    ));
+  }
+
+  Widget _chart(BuildContext context) {
     return AspectRatio(
       aspectRatio: 1,
       child: charts.TimeSeriesChart(

@@ -22,12 +22,12 @@ class Home extends StatelessWidget {
     return SingleChildScrollView(
         child: Column(
       children: <Widget>[
-        ChartCard(chartSeries: covid19.transition.carriers, id: "Carriers"),
-        ChartCard(chartSeries: covid19.transition.cases, id: "Case"),
-        ChartCard(chartSeries: covid19.transition.discharged, id: "Discharged"),
-        ChartCard(chartSeries: covid19.transition.pcrTested, id: "PCR Tested"),
-        ChartCard(chartSeries: covid19.transition.serious, id: "Serious"),
-        ChartCard(chartSeries: covid19.transition.death, id: "Death"),
+        ChartCard(chartSeries: covid19.transition.carriers, id: "感染者数"),
+        ChartCard(chartSeries: covid19.transition.cases, id: "患者数"),
+        ChartCard(chartSeries: covid19.transition.discharged, id: "退院者数"),
+        ChartCard(chartSeries: covid19.transition.pcrTested, id: "PCR検査人数"),
+        ChartCard(chartSeries: covid19.transition.serious, id: "重症者数"),
+        ChartCard(chartSeries: covid19.transition.death, id: "死亡者数"),
       ],
     ));
   }
