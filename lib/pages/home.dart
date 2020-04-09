@@ -16,6 +16,9 @@ class Home extends StatelessWidget {
 
   Widget _carriersChart(BuildContext context) {
     final covid19 = Provider.of<Covid19Store>(context).covid19;
+    if (covid19 == null) {
+      return CircularProgressIndicator();
+    }
     return charts.BarChart(
       _createSeries(covid19.transition.carriers),
       animate: true,

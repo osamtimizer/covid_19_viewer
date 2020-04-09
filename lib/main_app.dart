@@ -35,7 +35,7 @@ class MyHomePage extends StatelessWidget {
       client = MockClient((_) async {
         final loadData = await rootBundle.loadString("assets/covid19.json");
         return Response(loadData, 200,
-            headers: {'Content-Type': 'application/json; charset=utf-8'});
+            headers: {'content-type': 'application/json; charset=utf-8'});
       });
     }
     final request = Covid19Request(client: client);
