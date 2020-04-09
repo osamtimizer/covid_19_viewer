@@ -22,25 +22,10 @@ class Home extends StatelessWidget {
     return AspectRatio(
       aspectRatio: 1,
       child: charts.TimeSeriesChart(
-        _createSeries(covid19.transition.carriers, "carriers"),
+        ChartUtil.createSeries(covid19.transition.carriers, "carriers"),
         animate: true,
         defaultRenderer: charts.BarRendererConfig<DateTime>(),
       ),
     );
-  }
-
-  static List<charts.Series<ChartSeries, DateTime>> _createSeries(
-      List<ChartSeries> chartSeries, String id) {
-    final target =
-        chartSeries.sublist(chartSeries.length - 28, chartSeries.length);
-    return [
-      charts.Series<ChartSeries, DateTime>(
-        id: id,
-        colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
-        domainFn: (_chartSeries, count) => _chartSeries.date(),
-        measureFn: (_chartSeries, count) => _chartSeries.count,
-        data: target,
-      )
-    ];
   }
 }
