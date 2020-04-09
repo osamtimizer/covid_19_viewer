@@ -4,6 +4,7 @@ import 'package:charts_flutter/flutter.dart' as charts;
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final _pageController = PageController();
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -28,9 +29,25 @@ class Home extends StatelessWidget {
           ],
         ),
       ),
-      body: Center(
-        child: _carriersChart(context),
+      body: PageView(
+        controller: _pageController,
+        children: <Widget>[
+          Center(
+            child: _carriersChart(context),
+          ),
+          Text("都道府県別"),
+        ],
       ),
+      bottomNavigationBar: BottomNavigationBar(items: [
+        BottomNavigationBarItem(
+          title: Text("全国"),
+          icon: Icon(Icons.place),
+        ),
+        BottomNavigationBarItem(
+          title: Text("都道府県別"),
+          icon: Icon(Icons.directions_walk),
+        ),
+      ]),
     );
   }
 
