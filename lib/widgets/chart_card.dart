@@ -9,7 +9,7 @@ class ChartCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        color: Colors.grey,
+        color: Colors.grey.withOpacity(0.5),
         padding: EdgeInsets.all(8.0),
         margin: EdgeInsets.all(8.0),
         child: Column(

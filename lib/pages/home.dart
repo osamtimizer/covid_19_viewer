@@ -42,6 +42,13 @@ class Home extends StatelessWidget {
     return SingleChildScrollView(
         child: Column(
       children: <Widget>[
+        Text(
+          "全国の状況",
+          style: TextStyle(
+            fontSize: 24.0,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         ChartCard(chartSeries: covid19.transition.carriers, id: "感染者数"),
         ChartCard(chartSeries: covid19.transition.cases, id: "患者数"),
         ChartCard(chartSeries: covid19.transition.discharged, id: "退院者数"),
