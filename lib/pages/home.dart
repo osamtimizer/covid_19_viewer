@@ -19,20 +19,24 @@ class Home extends StatelessWidget {
     if (covid19 == null) {
       return CircularProgressIndicator();
     }
-    return charts.BarChart(
-      _createSeries(covid19.transition.carriers),
-      animate: true,
+    return AspectRatio(
+      aspectRatio: 1,
+      child: charts.TimeSeriesChart(
+        _createSeries(covid19.transition.carriers),
+        animate: true,
+      ),
     );
   }
 
-  static List<charts.Series<Carrier, String>> _createSeries(
+  static List<charts.Series<Carrier, DateTime>> _createSeries(
       List<Carrier> carriers) {
-    final target = carriers.sublist(carriers.length - 28, carriers.length);
+    final target = carriers.sublist(carriers.length - 14, carriers.length);
     return [
-      charts.Series<Carrier, String>(
+      charts.Series<Carrier, DateTime>(
         id: 'Carrier',
         colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
-        domainFn: (carrier, count) => carrier.day.toString(),
+        domainFn: (carrier, count) =>
+            DateTime(carrier.year, carrier.month, carrier.day),
         measureFn: (carrier, count) => carrier.count,
         data: target,
       )
