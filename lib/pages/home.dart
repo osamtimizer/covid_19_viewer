@@ -19,6 +19,16 @@ class Home extends StatelessWidget {
     if (covid19 == null) {
       return CircularProgressIndicator();
     }
-    return ChartCard(chartSeries: covid19.transition.carriers);
+    return SingleChildScrollView(
+        child: Column(
+      children: <Widget>[
+        ChartCard(chartSeries: covid19.transition.carriers, id: "Carriers"),
+        ChartCard(chartSeries: covid19.transition.cases, id: "Case"),
+        ChartCard(chartSeries: covid19.transition.discharged, id: "Discharged"),
+        ChartCard(chartSeries: covid19.transition.pcrTested, id: "PCR Tested"),
+        ChartCard(chartSeries: covid19.transition.serious, id: "Serious"),
+        ChartCard(chartSeries: covid19.transition.death, id: "Death"),
+      ],
+    ));
   }
 }
