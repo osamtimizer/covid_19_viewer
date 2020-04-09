@@ -9,22 +9,25 @@ class ChartCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+        color: Colors.grey,
+        padding: EdgeInsets.all(8.0),
+        margin: EdgeInsets.all(8.0),
         child: Column(
-      children: <Widget>[
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            Text(id),
-            Text("累計: " + chartSeries.last.count.toString()),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text(id),
+                Text("累計: " + chartSeries.last.count.toString()),
+              ],
+            ),
+            Stack(
+              children: <Widget>[
+                _chart(context),
+              ],
+            ),
           ],
-        ),
-        Stack(
-          children: <Widget>[
-            _chart(context),
-          ],
-        ),
-      ],
-    ));
+        ));
   }
 
   Widget _chart(BuildContext context) {
