@@ -11,6 +11,7 @@ export 'constants.dart';
 export 'models/covid19.dart';
 export 'models/transition.dart';
 export 'models/carrier.dart';
+export 'models/mixin/chart_series.dart';
 export 'models/case.dart';
 export 'models/death.dart';
 export 'models/discharged.dart';

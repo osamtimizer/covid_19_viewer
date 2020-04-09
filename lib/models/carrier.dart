@@ -1,6 +1,6 @@
 import 'package:covid_19_viewer/imports.dart';
 
-class Carrier {
+class Carrier with ChartSeries {
   int year;
   int month;
   int day;

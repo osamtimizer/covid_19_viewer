@@ -1,6 +1,6 @@
 import 'package:covid_19_viewer/imports.dart';
 
-class Serious {
+class Serious with ChartSeries {
   int year;
   int month;
   int day;

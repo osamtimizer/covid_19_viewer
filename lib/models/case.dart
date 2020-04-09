@@ -1,11 +1,11 @@
 import 'package:covid_19_viewer/imports.dart';
 
-class Case {
+class Case with ChartSeries {
   int year;
   int month;
   int day;
   int count;
-  Case (
+  Case(
       {@required this.year,
       @required this.month,
       @required this.day,
