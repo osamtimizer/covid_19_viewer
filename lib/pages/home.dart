@@ -6,7 +6,27 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Home"),
+        title: Text(
+          "Covid-19 Viewer",
+        ),
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              child: Text("Header"),
+            ),
+            ListTile(
+              title: Text("プライバシーポリシー"),
+              onTap: () {},
+            ),
+            ListTile(
+              title: Text("このアプリについて"),
+              onTap: () {},
+            ),
+          ],
+        ),
       ),
       body: Center(
         child: _carriersChart(context),
