@@ -33,9 +33,11 @@ class Home extends StatelessWidget {
         controller: _pageController,
         children: <Widget>[
           Center(
-            child: _carriersChart(context),
+            child: NationWide(),
           ),
-          Text("都道府県別"),
+          Center(
+            child: ByPrefecture(),
+          )
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(items: [
@@ -49,30 +51,5 @@ class Home extends StatelessWidget {
         ),
       ]),
     );
-  }
-
-  Widget _carriersChart(BuildContext context) {
-    final covid19 = Provider.of<Covid19Store>(context).covid19;
-    if (covid19 == null) {
-      return CircularProgressIndicator();
-    }
-    return SingleChildScrollView(
-        child: Column(
-      children: <Widget>[
-        Text(
-          "全国の状況",
-          style: TextStyle(
-            fontSize: 24.0,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        SimpleChartCard(chartSeries: covid19.transition.carriers, id: "感染者数"),
-        SimpleChartCard(chartSeries: covid19.transition.cases, id: "患者数"),
-        SimpleChartCard(chartSeries: covid19.transition.discharged, id: "退院者数"),
-        SimpleChartCard(chartSeries: covid19.transition.pcrTested, id: "PCR検査人数"),
-        SimpleChartCard(chartSeries: covid19.transition.serious, id: "重症者数"),
-        SimpleChartCard(chartSeries: covid19.transition.death, id: "死亡者数"),
-      ],
-    ));
   }
 }
