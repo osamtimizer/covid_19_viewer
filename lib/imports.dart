@@ -8,10 +8,17 @@ export 'package:provider/provider.dart';
 // lib
 export 'main_app.dart';
 export 'constants.dart';
+export 'package:covid_19_viewer/models/prefectures/prefectures_carrier.dart';
+export 'package:covid_19_viewer/models/prefectures/prefectures_death.dart';
+export 'package:covid_19_viewer/models/prefectures/prefectures_discharged.dart';
+export 'package:covid_19_viewer/models/prefectures/prefectures_pcrtested.dart';
 export 'models/covid19.dart';
 export 'models/transition.dart';
 export 'models/carrier.dart';
 export 'models/mixin/chart_series.dart';
+export 'package:covid_19_viewer/models/demography.dart';
+export 'package:covid_19_viewer/models/prefectures_data.dart';
+export 'package:covid_19_viewer/models/prefectures_map.dart';
 export 'models/case.dart';
 export 'models/death.dart';
 export 'models/discharged.dart';
