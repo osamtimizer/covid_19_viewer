@@ -28,4 +28,4 @@ export 'pages/home.dart';
 export 'requests/covid_19_request.dart';
 export 'stores/covid_19_store.dart';
 export 'utils/chart_util.dart';
-export 'widgets/chart_card.dart';
+export 'widgets/simple_chart_card.dart';

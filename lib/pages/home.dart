@@ -66,12 +66,12 @@ class Home extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        ChartCard(chartSeries: covid19.transition.carriers, id: "感染者数"),
-        ChartCard(chartSeries: covid19.transition.cases, id: "患者数"),
-        ChartCard(chartSeries: covid19.transition.discharged, id: "退院者数"),
-        ChartCard(chartSeries: covid19.transition.pcrTested, id: "PCR検査人数"),
-        ChartCard(chartSeries: covid19.transition.serious, id: "重症者数"),
-        ChartCard(chartSeries: covid19.transition.death, id: "死亡者数"),
+        SimpleChartCard(chartSeries: covid19.transition.carriers, id: "感染者数"),
+        SimpleChartCard(chartSeries: covid19.transition.cases, id: "患者数"),
+        SimpleChartCard(chartSeries: covid19.transition.discharged, id: "退院者数"),
+        SimpleChartCard(chartSeries: covid19.transition.pcrTested, id: "PCR検査人数"),
+        SimpleChartCard(chartSeries: covid19.transition.serious, id: "重症者数"),
+        SimpleChartCard(chartSeries: covid19.transition.death, id: "死亡者数"),
       ],
     ));
   }
