@@ -29,7 +29,7 @@ class SimpleTimeSeriesChartCard<T> extends StatelessWidget {
       child: charts.TimeSeriesChart(
         chartSeries,
         animate: true,
-        defaultRenderer: charts.BarRendererConfig<DateTime>(),
+        dateTimeFactory: const charts.LocalDateTimeFactory(),
       ),
     );
   }

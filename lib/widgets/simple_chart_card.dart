@@ -31,7 +31,7 @@ class SimpleChartCard extends StatelessWidget {
   }
 
   Widget _chart(BuildContext context) {
-    final series = ChartUtil.createSeries(chartSeries, id, 28);
+    final series = ChartUtil.createSeries(chartSeries, id, 28, false);
     return AspectRatio(
       aspectRatio: 1,
       child: charts.TimeSeriesChart(

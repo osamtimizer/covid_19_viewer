@@ -3,12 +3,14 @@ import 'package:charts_flutter/flutter.dart' as charts;
 
 class ChartUtil {
   static charts.Series<ChartSeries, DateTime> createSeries(
-      List<ChartSeries> chartSeries, String id, int limit) {
+      List<ChartSeries> chartSeries, String id, int limit, bool selected) {
     final target =
         chartSeries.sublist(chartSeries.length - limit, chartSeries.length);
     return charts.Series<ChartSeries, DateTime>(
       id: id,
-      colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
+      colorFn: (_, __) => selected
+          ? charts.MaterialPalette.green.shadeDefault
+          : charts.MaterialPalette.gray.shadeDefault.lighter,
       domainFn: (_chartSeries, _) => _chartSeries.date(),
       measureFn: (_chartSeries, _) => _chartSeries.count,
       data: target,
@@ -39,8 +41,8 @@ class ChartUtil {
           break;
       }
       assert(target != null, "no target available.");
-
-      return createSeries(target, data.ja, 21);
+      final selected = data.prefectureCode == selectedPrefectureCode;
+      return createSeries(target, data.ja, 21, selected);
     }).toList();
   }
 
