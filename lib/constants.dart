@@ -6,4 +6,6 @@ class Constants {
     assert(debug = true);
     return debug;
   }
+
+  static const Tokyo = 13;
 }

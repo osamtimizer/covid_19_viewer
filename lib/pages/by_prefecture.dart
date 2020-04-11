@@ -42,13 +42,19 @@ class ByPrefecture extends StatelessWidget {
   }
 
   Widget _dropdown(BuildContext context, List<PrefecturesMap> prefecturesMap) {
+    final store = Provider.of<Covid19Store>(context);
     return DropdownButton(
+        value: store.selectedPrefecture,
         items: prefecturesMap
             .map((i) => DropdownMenuItem(
                   child: Text(i.ja),
+                  value: i
                 ))
             .toList(),
-        onChanged: (value) {});
+        onChanged: (prefecture) {
+          Provider.of<Covid19Store>(context, listen: false)
+              .updateSelectedPrefecture(prefecture.code);
+        });
   }
 
   Widget _allPrefecturesChart(
@@ -68,4 +74,6 @@ class ByPrefecture extends StatelessWidget {
       ),
     );
   }
+
+  Widget _byPrefecturesChart(BuildContext context) {}
 }
