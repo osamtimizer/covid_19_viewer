@@ -53,12 +53,13 @@ class ByPrefecture extends StatelessWidget {
 
   Widget _allPrefecturesChart(
       BuildContext context, List<PrefecturesMap> prefecturesMap) {
+    prefecturesMap.sort((short, long) => long.value.compareTo(short.value));
     final series =
         ChartUtil.createAllPrefecturesSeries(prefecturesMap, "all prefectures");
     return Container(
       margin: EdgeInsets.all(8.0),
       child: AspectRatio(
-        aspectRatio: 1.0,
+        aspectRatio: 1 / 2,
         child: charts.BarChart(
           series,
           animate: true,
