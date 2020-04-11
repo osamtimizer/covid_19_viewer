@@ -46,10 +46,7 @@ class ByPrefecture extends StatelessWidget {
     return DropdownButton(
         value: store.selectedPrefecture,
         items: prefecturesMap
-            .map((i) => DropdownMenuItem(
-                  child: Text(i.ja),
-                  value: i
-                ))
+            .map((i) => DropdownMenuItem(child: Text(i.ja), value: i))
             .toList(),
         onChanged: (prefecture) {
           Provider.of<Covid19Store>(context, listen: false)
@@ -60,8 +57,10 @@ class ByPrefecture extends StatelessWidget {
   Widget _allPrefecturesChart(
       BuildContext context, List<PrefecturesMap> prefecturesMap) {
     prefecturesMap.sort((short, long) => long.value.compareTo(short.value));
-    final series =
-        ChartUtil.createAllPrefecturesSeries(prefecturesMap, "all prefectures");
+    final selectedCode =
+        Provider.of<Covid19Store>(context).selectedPrefecture.code;
+    final series = ChartUtil.createAllPrefecturesSeries(
+        prefecturesMap, "all prefectures", selectedCode);
     return Container(
       margin: EdgeInsets.all(8.0),
       child: AspectRatio(

@@ -18,13 +18,19 @@ class ChartUtil {
   }
 
   static List<charts.Series<PrefecturesMap, String>> createAllPrefecturesSeries(
-      List<PrefecturesMap> map, String id) {
+      List<PrefecturesMap> map, String id, int selectedPrefectureCode) {
     return [
       charts.Series<PrefecturesMap, String>(
         id: id,
         colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
         domainFn: (prefectureMap, _) => prefectureMap.ja,
         measureFn: (prefectureMap, _) => prefectureMap.value,
+        fillColorFn: (prefectureMap, _) {
+          final color = (prefectureMap.code == selectedPrefectureCode)
+              ? charts.MaterialPalette.green.shadeDefault
+              : charts.MaterialPalette.blue.shadeDefault.darker;
+          return color;
+        },
         data: map,
       )
     ];
