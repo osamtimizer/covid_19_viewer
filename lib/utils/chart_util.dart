@@ -10,9 +10,22 @@ class ChartUtil {
       charts.Series<ChartSeries, DateTime>(
         id: id,
         colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
-        domainFn: (_chartSeries, count) => _chartSeries.date(),
-        measureFn: (_chartSeries, count) => _chartSeries.count,
+        domainFn: (_chartSeries, _) => _chartSeries.date(),
+        measureFn: (_chartSeries, _) => _chartSeries.count,
         data: target,
+      )
+    ];
+  }
+
+  static List<charts.Series<PrefecturesMap, String>> createAllPrefecturesSeries(
+      List<PrefecturesMap> map, String id) {
+    return [
+      charts.Series<PrefecturesMap, String>(
+        id: id,
+        colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
+        domainFn: (prefectureMap, _) => prefectureMap.ja,
+        measureFn: (prefectureMap, _) => prefectureMap.value,
+        data: map,
       )
     ];
   }
