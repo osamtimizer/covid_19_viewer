@@ -17,7 +17,7 @@ export 'models/transition.dart';
 export 'models/carrier.dart';
 export 'models/mixin/chart_series.dart';
 export 'package:covid_19_viewer/models/demography.dart';
-export 'package:covid_19_viewer/models/prefectures_data.dart';
+export 'package:covid_19_viewer/models/prefectures_raw_data.dart';
 export 'package:covid_19_viewer/models/prefectures_map.dart';
 export 'models/case.dart';
 export 'models/death.dart';
