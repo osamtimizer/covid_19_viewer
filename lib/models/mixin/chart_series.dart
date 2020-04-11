@@ -6,6 +6,12 @@ class ChartSeries {
   int day;
   int count;
 
+  ChartSeries(
+      {@required this.year,
+      @required this.month,
+      @required this.day,
+      @required this.count});
+
   DateTime date() {
     return DateTime(year, month, day);
   }

@@ -31,10 +31,12 @@ class PrefecturesRawData {
   }
 
   List<Carrier> carriersByPrefecture(int code) {
-    return carriers
-        .map((i) => Carrier(
-            year: i.year, month: i.month, day: i.day, count: i.data[code - 1]))
-        .toList();
+    final result = carriers.map((i) {
+      final carrier = Carrier(
+          year: i.year, month: i.month, day: i.day, count: i.data[code - 1]);
+      return carrier;
+    });
+    return result.toList();
   }
 
   List<Death> deathsByPrefecture(int code) {

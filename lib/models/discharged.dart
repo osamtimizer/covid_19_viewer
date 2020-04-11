@@ -1,6 +1,6 @@
 import 'package:covid_19_viewer/imports.dart';
 
-class Discharged with ChartSeries {
+class Discharged extends ChartSeries {
   int year;
   int month;
   int day;
@@ -9,7 +9,8 @@ class Discharged with ChartSeries {
       {@required this.year,
       @required this.month,
       @required this.day,
-      @required this.count});
+      @required this.count})
+      : super(year: year, month: month, day: day, count: count);
 
   factory Discharged.fromArray(List<dynamic> array) {
     return Discharged(

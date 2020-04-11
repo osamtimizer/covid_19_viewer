@@ -1,15 +1,16 @@
 import 'package:covid_19_viewer/imports.dart';
 
-class Carrier with ChartSeries {
-  int year;
-  int month;
-  int day;
-  int count;
+class Carrier extends ChartSeries {
+  final int year;
+  final int month;
+  final int day;
+  final int count;
   Carrier(
       {@required this.year,
       @required this.month,
       @required this.day,
-      @required this.count});
+      @required this.count})
+      : super(year: year, month: month, day: day, count: count);
 
   factory Carrier.fromArray(List<dynamic> array) {
     return Carrier(

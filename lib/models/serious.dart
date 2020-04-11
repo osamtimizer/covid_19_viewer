@@ -1,6 +1,6 @@
 import 'package:covid_19_viewer/imports.dart';
 
-class Serious with ChartSeries {
+class Serious extends ChartSeries {
   int year;
   int month;
   int day;
@@ -9,7 +9,8 @@ class Serious with ChartSeries {
       {@required this.year,
       @required this.month,
       @required this.day,
-      @required this.count});
+      @required this.count})
+      : super(year: year, month: month, day: day, count: count);
 
   factory Serious.fromArray(List<dynamic> array) {
     return Serious(

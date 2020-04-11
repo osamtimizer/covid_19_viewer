@@ -1,10 +1,10 @@
 import 'package:covid_19_viewer/imports.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 
-class SimpleChartCard extends StatelessWidget {
-  final List<ChartSeries> chartSeries;
+class SimpleTimeSeriesChartCard<T> extends StatelessWidget {
+  final List<charts.Series<T, DateTime>> chartSeries;
   final String id;
-  SimpleChartCard({@required this.chartSeries, this.id = ""});
+  SimpleTimeSeriesChartCard({@required this.chartSeries, this.id = ""});
 
   @override
   Widget build(BuildContext context) {
@@ -14,13 +14,6 @@ class SimpleChartCard extends StatelessWidget {
         margin: EdgeInsets.all(8.0),
         child: Column(
           children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text(id),
-                Text("累計: " + chartSeries.last.count.toString()),
-              ],
-            ),
             Stack(
               children: <Widget>[
                 _chart(context),
@@ -31,11 +24,10 @@ class SimpleChartCard extends StatelessWidget {
   }
 
   Widget _chart(BuildContext context) {
-    final series = ChartUtil.createSeries(chartSeries, id, 28);
     return AspectRatio(
       aspectRatio: 1,
       child: charts.TimeSeriesChart(
-        [series],
+        chartSeries,
         animate: true,
         defaultRenderer: charts.BarRendererConfig<DateTime>(),
       ),

@@ -1,6 +1,6 @@
 import 'package:covid_19_viewer/imports.dart';
 
-class Covid19 with ChartSeries {
+class Covid19 {
   Transition transition;
   List<Demography> demography;
   PrefecturesRawData prefecturesRawData;

@@ -1,5 +1,6 @@
 import 'package:covid_19_viewer/imports.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
+import 'package:covid_19_viewer/widgets/simple_time_series_chart_card.dart';
 
 class ByPrefecture extends StatelessWidget {
   @override
@@ -35,6 +36,7 @@ class ByPrefecture extends StatelessWidget {
               ),
             ),
             _allPrefecturesChart(context, prefecturesMap),
+            _byPrefecturesChart(context),
           ],
         ),
       ),
@@ -74,5 +76,15 @@ class ByPrefecture extends StatelessWidget {
     );
   }
 
-  Widget _byPrefecturesChart(BuildContext context) {}
+  Widget _byPrefecturesChart(BuildContext context) {
+    final store = Provider.of<Covid19Store>(context);
+    final prefecturesData = store.covid19.prefecturesData;
+    final series = ChartUtil.createMultipleSeries(
+        prefecturesData, "carrier", store.selectedPrefecture.code, "carrier");
+    return Column(
+      children: <Widget>[
+        SimpleTimeSeriesChartCard(chartSeries: series, id: "carrier")
+      ],
+    );
+  }
 }

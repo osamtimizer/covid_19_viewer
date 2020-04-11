@@ -1,6 +1,6 @@
 import 'package:covid_19_viewer/imports.dart';
 
-class PCRTested with ChartSeries {
+class PCRTested extends ChartSeries {
   int year;
   int month;
   int day;
@@ -9,7 +9,8 @@ class PCRTested with ChartSeries {
       {@required this.year,
       @required this.month,
       @required this.day,
-      @required this.count});
+      @required this.count})
+      : super(year: year, month: month, day: day, count: count);
 
   factory PCRTested.fromArray(List<dynamic> array) {
     return PCRTested(
