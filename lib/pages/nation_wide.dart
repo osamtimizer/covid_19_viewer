@@ -7,6 +7,7 @@ class NationWide extends StatelessWidget {
     if (covid19 == null) {
       return CircularProgressIndicator();
     }
+    final store = Provider.of<NationWideStore>(context);
     return RefreshIndicator(
       onRefresh: () async {
         final store = Provider.of<Covid19Store>(context, listen: false);
@@ -23,15 +24,36 @@ class NationWide extends StatelessWidget {
               ),
             ),
             SimpleChartCard(
-                chartSeries: covid19.transition.carriers, id: "感染者数"),
-            SimpleChartCard(chartSeries: covid19.transition.cases, id: "患者数"),
+                chartSeries: covid19.transition.carriers,
+                id: "感染者数",
+                type: AvailableCharts.carrier,
+                isTotal: store.carrier),
             SimpleChartCard(
-                chartSeries: covid19.transition.discharged, id: "退院者数"),
+              chartSeries: covid19.transition.cases,
+              id: "患者数",
+              type: AvailableCharts.care,
+              isTotal: store.care,
+            ),
             SimpleChartCard(
-                chartSeries: covid19.transition.pcrTested, id: "PCR検査人数"),
+              chartSeries: covid19.transition.discharged,
+              id: "退院者数",
+              type: AvailableCharts.discharged,
+              isTotal: store.discharged,
+            ),
+            SimpleChartCard(
+              chartSeries: covid19.transition.pcrTested,
+              id: "PCR検査人数",
+              type: AvailableCharts.pcrTested,
+              isTotal: store.pcrTested,
+            ),
             SimpleChartCard(
                 chartSeries: covid19.transition.serious, id: "重症者数"),
-            SimpleChartCard(chartSeries: covid19.transition.death, id: "死亡者数"),
+            SimpleChartCard(
+              chartSeries: covid19.transition.death,
+              id: "死亡者数",
+              type: AvailableCharts.death,
+              isTotal: store.death,
+            ),
           ],
         ),
       ),

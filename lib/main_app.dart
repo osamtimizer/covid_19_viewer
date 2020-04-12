@@ -13,6 +13,7 @@ class MainApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => AppThemeStore()),
+        ChangeNotifierProvider(create: (context) => NationWideStore()),
       ],
       child: Covid19MaterialApp(),
     );

@@ -1,10 +1,17 @@
 import 'package:covid_19_viewer/imports.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
+import 'package:flutter/cupertino.dart';
 
 class SimpleChartCard extends StatelessWidget {
   final List<ChartSeries> chartSeries;
   final String id;
-  SimpleChartCard({@required this.chartSeries, this.id = ""});
+  final bool isTotal;
+  final AvailableCharts type;
+  SimpleChartCard(
+      {@required this.chartSeries,
+      this.id = "",
+      this.type,
+      this.isTotal = true});
 
   @override
   Widget build(BuildContext context) {
@@ -14,6 +21,19 @@ class SimpleChartCard extends StatelessWidget {
         margin: EdgeInsets.all(8.0),
         child: Column(
           children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text("新規"),
+                CupertinoSwitch(
+                    value: isTotal,
+                    onChanged: (value) {
+                      Provider.of<NationWideStore>(context, listen: false)
+                          .updateChartType(value, type);
+                    }),
+                Text("累計"),
+              ],
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[

@@ -31,5 +31,6 @@ export 'pages/nation_wide.dart';
 export 'pages/by_prefecture.dart';
 export 'requests/covid_19_request.dart';
 export 'stores/covid_19_store.dart';
+export 'stores/nation_wide_store.dart';
 export 'utils/chart_util.dart';
 export 'widgets/simple_chart_card.dart';
