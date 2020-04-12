@@ -20,11 +20,22 @@ class Home extends StatelessWidget {
             ),
             ListTile(
               title: Text("プライバシーポリシー"),
-              onTap: () {},
+              onTap: () async {
+                const url =
+                    "https://covid-19-viewer-document.now.sh/privacyPolicy";
+                if (await canLaunch(url)) {
+                  await launch(url);
+                }
+              },
             ),
             ListTile(
               title: Text("このアプリについて"),
-              onTap: () {},
+              onTap: () async {
+                const url = "https://covid-19-viewer-document.now.sh/";
+                if (await canLaunch(url)) {
+                  await launch(url);
+                }
+              },
             ),
           ],
         ),

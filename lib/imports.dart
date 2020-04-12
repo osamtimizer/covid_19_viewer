@@ -4,6 +4,7 @@ export 'dart:convert';
 // packages
 export 'package:flutter/material.dart';
 export 'package:provider/provider.dart';
+export 'package:url_launcher/url_launcher.dart';
 
 // lib
 export 'main_app.dart';
