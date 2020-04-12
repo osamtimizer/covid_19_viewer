@@ -1,9 +1,13 @@
 import 'package:covid_19_viewer/imports.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
+import 'package:flutter/cupertino.dart';
 
 class SimpleTimeSeriesChartCard extends StatelessWidget {
   final String targetType;
-  SimpleTimeSeriesChartCard({@required this.targetType});
+  final bool isTotal;
+  final AvailableCharts type;
+  SimpleTimeSeriesChartCard(
+      {@required this.targetType, @required this.type, this.isTotal = true});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +16,7 @@ class SimpleTimeSeriesChartCard extends StatelessWidget {
     final selectedPrefecture = prefecturesData
         .firstWhere((i) => i.prefectureCode == store.selectedPrefecture.code);
     final chartSeries = ChartUtil.createMultipleSeries(prefecturesData,
-        targetType, selectedPrefecture.prefectureCode, targetType, true);
+        targetType, selectedPrefecture.prefectureCode, targetType, isTotal);
     int total = 0;
     String targetName;
 
@@ -57,6 +61,19 @@ class SimpleTimeSeriesChartCard extends StatelessWidget {
         margin: EdgeInsets.all(8.0),
         child: Column(
           children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text("新規"),
+                CupertinoSwitch(
+                    value: isTotal,
+                    onChanged: (value) {
+                      Provider.of<ByPrefectureStore>(context, listen: false)
+                          .updateChartType(value, type);
+                    }),
+                Text("累計"),
+              ],
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[

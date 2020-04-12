@@ -83,12 +83,26 @@ class ByPrefecture extends StatelessWidget {
   }
 
   Widget _byPrefecturesChart(BuildContext context) {
+    final store = Provider.of<ByPrefectureStore>(context);
     return Column(
       children: <Widget>[
-        SimpleTimeSeriesChartCard(targetType: "carrier"),
-        SimpleTimeSeriesChartCard(targetType: "death"),
-        SimpleTimeSeriesChartCard(targetType: "discharged"),
-        SimpleTimeSeriesChartCard(targetType: "pcrTested"),
+        SimpleTimeSeriesChartCard(
+            targetType: "carrier",
+            type: AvailableCharts.carrier,
+            isTotal: store.carrier),
+        SimpleTimeSeriesChartCard(
+            targetType: "death",
+            type: AvailableCharts.death,
+            isTotal: store.death),
+        SimpleTimeSeriesChartCard(
+            targetType: "discharged",
+            type: AvailableCharts.discharged,
+            isTotal: store.discharged),
+        SimpleTimeSeriesChartCard(
+          targetType: "pcrTested",
+          type: AvailableCharts.pcrTested,
+          isTotal: store.pcrTested,
+        )
       ],
     );
   }

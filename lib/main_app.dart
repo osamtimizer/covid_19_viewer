@@ -14,6 +14,7 @@ class MainApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (context) => AppThemeStore()),
         ChangeNotifierProvider(create: (context) => NationWideStore()),
+        ChangeNotifierProvider(create: (context) => ByPrefectureStore()),
       ],
       child: Covid19MaterialApp(),
     );
