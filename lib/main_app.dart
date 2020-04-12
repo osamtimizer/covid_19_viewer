@@ -25,6 +25,7 @@ class Covid19MaterialApp extends StatelessWidget {
     return MaterialApp(
         title: 'Flutter Demo',
         theme: Provider.of<AppThemeStore>(context).themeData,
+        debugShowCheckedModeBanner: false,
         home: MultiProvider(
           providers: [
             ChangeNotifierProvider(
