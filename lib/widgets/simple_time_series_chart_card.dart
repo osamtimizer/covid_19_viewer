@@ -15,9 +15,16 @@ class SimpleTimeSeriesChartCard extends StatelessWidget {
         .carriers
         .last
         .count;
-
     final chartSeries = ChartUtil.createMultipleSeries(
         prefecturesData, "carrier", selectedPrefecture.code, "carrier");
+    return _chartCard(context, chartSeries, selectedPrefecture.ja, total);
+  }
+
+  Widget _chartCard(
+      BuildContext context,
+      List<charts.Series<ChartSeries, DateTime>> chartSeries,
+      String selectedPrefecture,
+      int total) {
     return Container(
         color: Colors.grey.withOpacity(0.5),
         padding: EdgeInsets.all(8.0),
@@ -27,7 +34,7 @@ class SimpleTimeSeriesChartCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Text("${selectedPrefecture.ja}の感染者数"),
+                Text("$selectedPrefectureの感染者数"),
                 Text("累計: ${total.toString()}"),
               ],
             ),
