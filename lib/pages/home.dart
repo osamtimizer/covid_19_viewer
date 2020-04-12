@@ -15,8 +15,11 @@ class Home extends StatelessWidget {
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
-            DrawerHeader(
-              child: Text("Header"),
+            Container(
+              height: 100.0,
+              child: DrawerHeader(
+                child: Text("Menu"),
+              ),
             ),
             ListTile(
               title: Text("プライバシーポリシー"),
