@@ -70,7 +70,7 @@ class ByPrefecture extends StatelessWidget {
         prefecturesMap, "all prefectures", selectedCode);
     return Container(
       margin: EdgeInsets.all(8.0),
-      color: Colors.grey.withOpacity(0.5),
+      color: Colors.grey.withOpacity(0.9),
       child: AspectRatio(
         aspectRatio: 1 / 2,
         child: charts.BarChart(

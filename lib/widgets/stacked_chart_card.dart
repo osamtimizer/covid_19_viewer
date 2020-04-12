@@ -9,7 +9,7 @@ class StackedChartCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        color: Colors.grey.withOpacity(0.5),
+        color: Colors.grey.withOpacity(0.9),
         padding: EdgeInsets.all(8.0),
         margin: EdgeInsets.all(8.0),
         child: Column(

@@ -13,7 +13,7 @@ class ChartUtil {
     return charts.Series<ChartSeries, DateTime>(
       id: id,
       colorFn: (_, __) => emphasized
-          ? charts.MaterialPalette.green.shadeDefault
+          ? charts.MaterialPalette.green.shadeDefault.darker
           : charts.Color(r: 238, g: 238, b: 238, a: 25),
       domainFn: (_chartSeries, _) => _chartSeries.date(),
       measureFn: (_chartSeries, index) {
