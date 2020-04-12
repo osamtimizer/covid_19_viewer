@@ -39,3 +39,4 @@ lib/generated_plugin_registrant.dart
 # custom
 result.json
 google-services.json
+GoogleService-Info.plist
