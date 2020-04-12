@@ -3,7 +3,11 @@ import 'package:charts_flutter/flutter.dart' as charts;
 
 class ChartUtil {
   static charts.Series<ChartSeries, DateTime> createSeries(
-      List<ChartSeries> chartSeries, String id, int limit, bool emphasized) {
+      List<ChartSeries> chartSeries,
+      String id,
+      int limit,
+      bool emphasized,
+      bool isTotal) {
     final target =
         chartSeries.sublist(chartSeries.length - limit, chartSeries.length);
     return charts.Series<ChartSeries, DateTime>(
@@ -12,7 +16,15 @@ class ChartUtil {
           ? charts.MaterialPalette.green.shadeDefault
           : charts.MaterialPalette.gray.shadeDefault.lighter,
       domainFn: (_chartSeries, _) => _chartSeries.date(),
-      measureFn: (_chartSeries, _) => _chartSeries.count,
+      measureFn: (_chartSeries, index) {
+        if (isTotal) {
+          return _chartSeries.count;
+        }
+        if (index == 0) {
+          return 0;
+        }
+        return _chartSeries.count - target[index - 1].count;
+      },
       data: target,
     );
   }
@@ -21,7 +33,8 @@ class ChartUtil {
       List<PrefectureData> prefecturesData,
       String id,
       int selectedPrefectureCode,
-      String targetType) {
+      String targetType,
+      bool isTotal) {
     return prefecturesData.map((data) {
       List<ChartSeries> target;
       switch (targetType) {
@@ -42,7 +55,7 @@ class ChartUtil {
       }
       assert(target != null, "no target available.");
       final selected = data.prefectureCode == selectedPrefectureCode;
-      return createSeries(target, data.ja, 21, selected);
+      return createSeries(target, data.ja, 21, selected, isTotal);
     }).toList();
   }
 

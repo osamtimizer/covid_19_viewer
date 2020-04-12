@@ -12,7 +12,7 @@ class SimpleTimeSeriesChartCard extends StatelessWidget {
     final selectedPrefecture = prefecturesData
         .firstWhere((i) => i.prefectureCode == store.selectedPrefecture.code);
     final chartSeries = ChartUtil.createMultipleSeries(prefecturesData,
-        targetType, selectedPrefecture.prefectureCode, targetType);
+        targetType, selectedPrefecture.prefectureCode, targetType, true);
     int total = 0;
     String targetName;
 

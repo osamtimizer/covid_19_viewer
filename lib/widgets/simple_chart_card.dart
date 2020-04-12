@@ -43,15 +43,15 @@ class SimpleChartCard extends StatelessWidget {
             ),
             Stack(
               children: <Widget>[
-                _chart(context),
+                _chart(context, isTotal),
               ],
             ),
           ],
         ));
   }
 
-  Widget _chart(BuildContext context) {
-    final series = ChartUtil.createSeries(chartSeries, id, 28, true);
+  Widget _chart(BuildContext context, bool isTotal) {
+    final series = ChartUtil.createSeries(chartSeries, id, 28, true, isTotal);
     return AspectRatio(
       aspectRatio: 1,
       child: charts.TimeSeriesChart(
