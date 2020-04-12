@@ -2,28 +2,43 @@ import 'package:covid_19_viewer/imports.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 
 class SimpleTimeSeriesChartCard extends StatelessWidget {
-  final String id;
-  SimpleTimeSeriesChartCard({this.id = ""});
+  final String targetType;
+  SimpleTimeSeriesChartCard({@required this.targetType});
 
   @override
   Widget build(BuildContext context) {
     final store = Provider.of<Covid19Store>(context);
     final prefecturesData = store.covid19.prefecturesData;
-    final selectedPrefecture = store.selectedPrefecture;
-    final total = prefecturesData
-        .firstWhere((i) => i.prefectureCode == store.selectedPrefecture.code)
-        .carriers
-        .last
-        .count;
-    final chartSeries = ChartUtil.createMultipleSeries(
-        prefecturesData, "carrier", selectedPrefecture.code, "carrier");
+    final selectedPrefecture = prefecturesData
+        .firstWhere((i) => i.prefectureCode == store.selectedPrefecture.code);
+    final chartSeries = ChartUtil.createMultipleSeries(prefecturesData,
+        targetType, selectedPrefecture.prefectureCode, targetType);
+    int total = 0;
+
+    switch (targetType) {
+      case "carrier":
+        total = selectedPrefecture.carriers.last.count;
+        break;
+      case "death":
+        total = selectedPrefecture.deaths.last.count;
+        break;
+      case "discharged":
+        total = selectedPrefecture.discharged.last.count;
+        break;
+      case "pcrTested":
+        total = selectedPrefecture.pcrTested.last.count;
+        break;
+      default:
+        assert(false, "target type not found");
+        break;
+    }
     return _chartCard(context, chartSeries, selectedPrefecture.ja, total);
   }
 
   Widget _chartCard(
       BuildContext context,
       List<charts.Series<ChartSeries, DateTime>> chartSeries,
-      String selectedPrefecture,
+      String selectedPrefectureName,
       int total) {
     return Container(
         color: Colors.grey.withOpacity(0.5),
@@ -34,7 +49,7 @@ class SimpleTimeSeriesChartCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Text("$selectedPrefectureの感染者数"),
+                Text("$selectedPrefectureNameの感染者数"),
                 Text("累計: ${total.toString()}"),
               ],
             ),
