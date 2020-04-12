@@ -3,12 +3,12 @@ import 'package:charts_flutter/flutter.dart' as charts;
 
 class ChartUtil {
   static charts.Series<ChartSeries, DateTime> createSeries(
-      List<ChartSeries> chartSeries, String id, int limit, bool selected) {
+      List<ChartSeries> chartSeries, String id, int limit, bool emphasized) {
     final target =
         chartSeries.sublist(chartSeries.length - limit, chartSeries.length);
     return charts.Series<ChartSeries, DateTime>(
       id: id,
-      colorFn: (_, __) => selected
+      colorFn: (_, __) => emphasized
           ? charts.MaterialPalette.green.shadeDefault
           : charts.MaterialPalette.gray.shadeDefault.lighter,
       domainFn: (_chartSeries, _) => _chartSeries.date(),
