@@ -6,10 +6,8 @@ import 'package:http/testing.dart';
 import 'imports.dart';
 
 class MainApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    //final platformBrightness = MediaQuery.platformBrightnessOf(context);
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => AppThemeStore()),
@@ -22,11 +20,16 @@ class MainApp extends StatelessWidget {
 }
 
 class Covid19MaterialApp extends StatelessWidget {
+  static FirebaseAnalytics analytics = FirebaseAnalytics();
+  static FirebaseAnalyticsObserver observer =
+      FirebaseAnalyticsObserver(analytics: analytics);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
         title: 'Flutter Demo',
         theme: Provider.of<AppThemeStore>(context).themeData,
+        navigatorObservers: <NavigatorObserver>[observer],
         debugShowCheckedModeBanner: false,
         home: MultiProvider(
           providers: [
