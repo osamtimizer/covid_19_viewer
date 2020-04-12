@@ -78,7 +78,12 @@ class ByPrefecture extends StatelessWidget {
 
   Widget _byPrefecturesChart(BuildContext context) {
     return Column(
-      children: <Widget>[SimpleTimeSeriesChartCard(targetType: "carrier")],
+      children: <Widget>[
+        SimpleTimeSeriesChartCard(targetType: "carrier"),
+        SimpleTimeSeriesChartCard(targetType: "death"),
+        SimpleTimeSeriesChartCard(targetType: "discharged"),
+        SimpleTimeSeriesChartCard(targetType: "pcrTested"),
+      ],
     );
   }
 }

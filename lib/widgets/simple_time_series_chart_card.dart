@@ -14,31 +14,42 @@ class SimpleTimeSeriesChartCard extends StatelessWidget {
     final chartSeries = ChartUtil.createMultipleSeries(prefecturesData,
         targetType, selectedPrefecture.prefectureCode, targetType);
     int total = 0;
+    String targetName;
 
     switch (targetType) {
       case "carrier":
-        total = selectedPrefecture.carriers.last.count;
+        final target = selectedPrefecture.carriers.last;
+        total = target.count;
+        targetName = target.ja;
         break;
       case "death":
-        total = selectedPrefecture.deaths.last.count;
+        final target = selectedPrefecture.deaths.last;
+        total = target.count;
+        targetName = target.ja;
         break;
       case "discharged":
-        total = selectedPrefecture.discharged.last.count;
+        final target = selectedPrefecture.discharged.last;
+        total = target.count;
+        targetName = target.ja;
         break;
       case "pcrTested":
-        total = selectedPrefecture.pcrTested.last.count;
+        final target = selectedPrefecture.pcrTested.last;
+        total = target.count;
+        targetName = target.ja;
         break;
       default:
         assert(false, "target type not found");
         break;
     }
-    return _chartCard(context, chartSeries, selectedPrefecture.ja, total);
+    return _chartCard(
+        context, chartSeries, selectedPrefecture.ja, targetName, total);
   }
 
   Widget _chartCard(
       BuildContext context,
       List<charts.Series<ChartSeries, DateTime>> chartSeries,
       String selectedPrefectureName,
+      String targetName,
       int total) {
     return Container(
         color: Colors.grey.withOpacity(0.5),
@@ -49,7 +60,7 @@ class SimpleTimeSeriesChartCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Text("$selectedPrefectureNameの感染者数"),
+                Text("$selectedPrefectureNameの$targetName"),
                 Text("累計: ${total.toString()}"),
               ],
             ),

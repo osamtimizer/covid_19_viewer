@@ -1,10 +1,11 @@
 import 'package:covid_19_viewer/imports.dart';
 
 class PCRTested extends ChartSeries {
-  int year;
-  int month;
-  int day;
-  int count;
+  final int year;
+  final int month;
+  final int day;
+  final int count;
+  final String ja = "PCR検査人数";
   PCRTested(
       {@required this.year,
       @required this.month,

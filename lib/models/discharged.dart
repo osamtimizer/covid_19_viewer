@@ -1,10 +1,11 @@
 import 'package:covid_19_viewer/imports.dart';
 
 class Discharged extends ChartSeries {
-  int year;
-  int month;
-  int day;
-  int count;
+  final int year;
+  final int month;
+  final int day;
+  final int count;
+  final String ja = "退院者数";
   Discharged(
       {@required this.year,
       @required this.month,

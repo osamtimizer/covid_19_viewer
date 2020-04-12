@@ -5,6 +5,7 @@ class Carrier extends ChartSeries {
   final int month;
   final int day;
   final int count;
+  final String ja = "感染者数";
   Carrier(
       {@required this.year,
       @required this.month,
