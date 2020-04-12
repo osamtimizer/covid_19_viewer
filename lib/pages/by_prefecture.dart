@@ -14,30 +14,35 @@ class ByPrefecture extends StatelessWidget {
       return CircularProgressIndicator();
     }
     final prefecturesMap = covid19.prefecturesMap;
-    return SingleChildScrollView(
-      child: Container(
-        child: Column(
-          children: <Widget>[
-            Container(
-              padding: EdgeInsets.all(8.0),
-              margin: EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Text(
-                    "都道府県別の状況",
-                    style: TextStyle(
-                      fontSize: 24.0,
-                      fontWeight: FontWeight.bold,
+    return RefreshIndicator(
+      onRefresh: () async {
+        Provider.of<Covid19Store>(context, listen: false).refreshCovid19();
+      },
+      child: SingleChildScrollView(
+        child: Container(
+          child: Column(
+            children: <Widget>[
+              Container(
+                padding: EdgeInsets.all(8.0),
+                margin: EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Text(
+                      "都道府県別の状況",
+                      style: TextStyle(
+                        fontSize: 24.0,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                  ),
-                  _dropdown(context, prefecturesMap),
-                ],
+                    _dropdown(context, prefecturesMap),
+                  ],
+                ),
               ),
-            ),
-            _allPrefecturesChart(context, prefecturesMap),
-            _byPrefecturesChart(context),
-          ],
+              _allPrefecturesChart(context, prefecturesMap),
+              _byPrefecturesChart(context),
+            ],
+          ),
         ),
       ),
     );
