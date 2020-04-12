@@ -77,13 +77,9 @@ class ByPrefecture extends StatelessWidget {
   }
 
   Widget _byPrefecturesChart(BuildContext context) {
-    final store = Provider.of<Covid19Store>(context);
-    final prefecturesData = store.covid19.prefecturesData;
-    final series = ChartUtil.createMultipleSeries(
-        prefecturesData, "carrier", store.selectedPrefecture.code, "carrier");
     return Column(
       children: <Widget>[
-        SimpleTimeSeriesChartCard(chartSeries: series, id: "carrier")
+        SimpleTimeSeriesChartCard(id: "carrier")
       ],
     );
   }
