@@ -7,6 +7,7 @@ export 'package:provider/provider.dart';
 export 'package:url_launcher/url_launcher.dart';
 export 'package:firebase_analytics/firebase_analytics.dart';
 export 'package:firebase_analytics/observer.dart';
+export 'package:firebase_crashlytics/firebase_crashlytics.dart';
 
 // lib
 export 'main_app.dart';

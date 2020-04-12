@@ -1,5 +1,11 @@
 import 'imports.dart';
+import 'dart:async';
 
 void main() async {
-  runApp(MainApp());
+  Crashlytics.instance.enableInDevMode = true;
+  FlutterError.onError = Crashlytics.instance.recordFlutterError;
+
+  runZoned(() {
+    runApp(MainApp());
+  }, onError: Crashlytics.instance.recordError);
 }
