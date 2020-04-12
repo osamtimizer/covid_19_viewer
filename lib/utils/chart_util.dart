@@ -14,7 +14,7 @@ class ChartUtil {
       id: id,
       colorFn: (_, __) => emphasized
           ? charts.MaterialPalette.green.shadeDefault
-          : charts.MaterialPalette.gray.shadeDefault.lighter,
+          : charts.Color(r: 238, g: 238, b: 238, a: 25),
       domainFn: (_chartSeries, _) => _chartSeries.date(),
       measureFn: (_chartSeries, index) {
         if (isTotal) {
