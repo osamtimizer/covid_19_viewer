@@ -1,3 +1,4 @@
+import 'package:covid_19_viewer/stores/app_theme_store.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
@@ -8,11 +9,22 @@ class MainApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    //final platformBrightness = MediaQuery.platformBrightnessOf(context);
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => AppThemeStore()),
+      ],
+      child: Covid19MaterialApp(),
+    );
+  }
+}
+
+class Covid19MaterialApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
     return MaterialApp(
         title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
+        theme: Provider.of<AppThemeStore>(context).themeData,
         home: MultiProvider(
           providers: [
             ChangeNotifierProvider(
