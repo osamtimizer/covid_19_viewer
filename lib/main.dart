@@ -2,7 +2,10 @@ import 'imports.dart';
 import 'dart:async';
 
 void main() async {
-  Crashlytics.instance.enableInDevMode = true;
+  if (Constants.isDebug) {
+    Crashlytics.instance.enableInDevMode = true;
+  }
+
   FlutterError.onError = Crashlytics.instance.recordFlutterError;
 
   runZoned(() {
