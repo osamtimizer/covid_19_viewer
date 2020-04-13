@@ -47,7 +47,11 @@ class NationWide extends StatelessWidget {
               isTotal: store.pcrTested,
             ),
             SimpleChartCard(
-                chartSeries: covid19.transition.serious, id: "重症者数"),
+              chartSeries: covid19.transition.serious,
+              id: "重症者数",
+              type: AvailableCharts.serious,
+              isTotal: store.serious,
+            ),
             SimpleChartCard(
               chartSeries: covid19.transition.death,
               id: "死亡者数",
