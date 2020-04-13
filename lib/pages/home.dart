@@ -4,7 +4,21 @@ import 'package:charts_flutter/flutter.dart' as charts;
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final _pageController = PageController();
+    final store = Provider.of<TabBarStore>(context);
+    final pageController = PageController();
+    pageController.addListener(() {});
+    final onPageChanged = (int index) async {
+      Provider.of<TabBarStore>(context, listen: false).updateIndex(index);
+    };
+    final onTap = (int index) async {
+      Provider.of<TabBarStore>(context, listen: false).updateIndex(index);
+      if (pageController.hasClients) {
+        pageController.animateToPage(index,
+            duration: const Duration(microseconds: 400),
+            curve: Curves.easeInSine);
+      }
+    };
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -44,7 +58,7 @@ class Home extends StatelessWidget {
         ),
       ),
       body: PageView(
-        controller: _pageController,
+        controller: pageController,
         children: <Widget>[
           Center(
             child: NationWide(),
@@ -53,17 +67,22 @@ class Home extends StatelessWidget {
             child: ByPrefecture(),
           )
         ],
+        onPageChanged: onPageChanged,
       ),
-      bottomNavigationBar: BottomNavigationBar(items: [
-        BottomNavigationBarItem(
-          title: Text("全国"),
-          icon: Icon(Icons.place),
-        ),
-        BottomNavigationBarItem(
-          title: Text("都道府県別"),
-          icon: Icon(Icons.directions_walk),
-        ),
-      ]),
+      bottomNavigationBar: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(
+            title: Text("全国"),
+            icon: Icon(Icons.place),
+          ),
+          BottomNavigationBarItem(
+            title: Text("都道府県別"),
+            icon: Icon(Icons.directions_walk),
+          ),
+        ],
+        currentIndex: store.currentIndex,
+        onTap: onTap,
+      ),
     );
   }
 }

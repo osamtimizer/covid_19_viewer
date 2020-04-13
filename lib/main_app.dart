@@ -11,6 +11,7 @@ class MainApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => AppThemeStore()),
+        ChangeNotifierProvider(create: (context) => TabBarStore()),
         ChangeNotifierProvider(create: (context) => NationWideStore()),
         ChangeNotifierProvider(create: (context) => ByPrefectureStore()),
       ],
