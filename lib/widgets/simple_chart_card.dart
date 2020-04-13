@@ -37,8 +37,18 @@ class SimpleChartCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Text(id),
-                Text("累計: " + chartSeries.last.count.toString()),
+                Text(
+                  id,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  "累計: " + chartSeries.last.count.toString(),
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ],
             ),
             Stack(

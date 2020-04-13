@@ -77,8 +77,18 @@ class SimpleTimeSeriesChartCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Text("$selectedPrefectureNameの$targetName"),
-                Text("累計: ${total.toString()}"),
+                Text(
+                  "$selectedPrefectureNameの$targetName",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  "累計: ${total.toString()}",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ],
             ),
             Stack(
