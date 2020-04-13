@@ -78,6 +78,7 @@ class ByPrefecture extends StatelessWidget {
               child: Text(
                 "都道府県別の感染者数",
                 style: TextStyle(fontWeight: FontWeight.bold),
+              ),
             ),
             AspectRatio(
               aspectRatio: 1 / 2,
