@@ -10,7 +10,10 @@ class Covid19Request {
   Covid19Request({@required this.client});
 
   Future<Covid19> fetch() async {
-    final response = await this.client.get(uri);
+    final response = await this.client.get(uri).catchError((error) {
+      Crashlytics.instance.recordError(error, StackTrace.current);
+      throw error;
+    });
     return Covid19.fromJson(json.decode(response.body));
   }
 }
