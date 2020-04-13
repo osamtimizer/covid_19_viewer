@@ -69,17 +69,26 @@ class ByPrefecture extends StatelessWidget {
     final series = ChartUtil.createAllPrefecturesSeries(
         prefecturesMap, "all prefectures", selectedCode);
     return Container(
-      margin: EdgeInsets.all(8.0),
-      color: Colors.grey.withOpacity(0.7),
-      child: AspectRatio(
-        aspectRatio: 1 / 2,
-        child: charts.BarChart(
-          series,
-          animate: true,
-          vertical: false,
-        ),
-      ),
-    );
+        margin: EdgeInsets.all(8.0),
+        color: Colors.grey.withOpacity(0.7),
+        child: Column(
+          children: <Widget>[
+            Container(
+              padding: EdgeInsets.only(top: 8.0),
+              child: Text(
+                "都道府県別の感染者数",
+                style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+            AspectRatio(
+              aspectRatio: 1 / 2,
+              child: charts.BarChart(
+                series,
+                animate: true,
+                vertical: false,
+              ),
+            ),
+          ],
+        ));
   }
 
   Widget _byPrefecturesChart(BuildContext context) {
