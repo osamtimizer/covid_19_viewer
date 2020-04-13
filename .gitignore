@@ -40,3 +40,4 @@ lib/generated_plugin_registrant.dart
 result.json
 google-services.json
 GoogleService-Info.plist
+covid_19_viewer.kjs
