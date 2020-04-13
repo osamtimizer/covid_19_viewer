@@ -56,7 +56,7 @@ class SimpleTimeSeriesChartCard extends StatelessWidget {
       String targetName,
       int total) {
     return Container(
-        color: Colors.grey.withOpacity(0.9),
+        color: Colors.grey.withOpacity(0.7),
         padding: EdgeInsets.all(8.0),
         margin: EdgeInsets.all(8.0),
         child: Column(

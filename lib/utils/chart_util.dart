@@ -13,7 +13,7 @@ class ChartUtil {
     return charts.Series<ChartSeries, DateTime>(
       id: id,
       colorFn: (_, __) => emphasized
-          ? charts.MaterialPalette.green.shadeDefault.darker
+          ? charts.MaterialPalette.green.shadeDefault
           : charts.Color(r: 238, g: 238, b: 238, a: 25),
       domainFn: (_chartSeries, _) => _chartSeries.date(),
       measureFn: (_chartSeries, index) {
@@ -70,7 +70,7 @@ class ChartUtil {
         fillColorFn: (prefectureMap, _) {
           final color = (prefectureMap.code == selectedPrefectureCode)
               ? charts.MaterialPalette.green.shadeDefault
-              : charts.MaterialPalette.blue.shadeDefault.darker;
+              : charts.MaterialPalette.blue.shadeDefault;
           return color;
         },
         data: map,
