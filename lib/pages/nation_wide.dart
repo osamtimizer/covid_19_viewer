@@ -5,13 +5,14 @@ class NationWide extends StatelessWidget {
   Widget build(BuildContext context) {
     final covid19 = Provider.of<Covid19Store>(context).covid19;
     if (covid19 == null) {
-      return CircularProgressIndicator();
+      return Center(child: CircularProgressIndicator());
     }
     final store = Provider.of<NationWideStore>(context);
     return RefreshIndicator(
       onRefresh: () async {
         final store = Provider.of<Covid19Store>(context, listen: false);
         store.refreshCovid19();
+        Provider.of<TabBarStore>(context, listen: false).clearError();
       },
       child: SingleChildScrollView(
         child: Column(

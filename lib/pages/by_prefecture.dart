@@ -11,12 +11,13 @@ class ByPrefecture extends StatelessWidget {
 
   Widget _body(BuildContext context, Covid19 covid19) {
     if (covid19 == null) {
-      return CircularProgressIndicator();
+      return Center(child: CircularProgressIndicator());
     }
     final prefecturesMap = covid19.prefecturesMap;
     return RefreshIndicator(
       onRefresh: () async {
         Provider.of<Covid19Store>(context, listen: false).refreshCovid19();
+        Provider.of<TabBarStore>(context, listen: false).clearError();
       },
       child: SingleChildScrollView(
         child: Container(

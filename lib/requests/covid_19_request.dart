@@ -14,6 +14,10 @@ class Covid19Request {
       Crashlytics.instance.recordError(error, StackTrace.current);
       throw error;
     });
+    if (response.statusCode >= 400) {
+      final error = Exception("http request error");
+      throw error;
+    }
     return Covid19.fromJson(json.decode(response.body));
   }
 }

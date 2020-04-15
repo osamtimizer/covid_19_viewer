@@ -59,6 +59,10 @@ class MyHomePage extends StatelessWidget {
     final request = Covid19Request(client: client);
     request.fetch().then((value) {
       Provider.of<Covid19Store>(context, listen: false).updateCovid19(value);
+    }).catchError((e) {
+      Provider.of<TabBarStore>(context, listen: false)
+          .updateError(e.toString());
+      Crashlytics.instance.recordError(e, StackTrace.current);
     });
     return Home();
   }

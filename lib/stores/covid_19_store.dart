@@ -35,7 +35,7 @@ class Covid19Store extends ChangeNotifier {
       }
       _isFetching = false;
       notifyListeners();
-    });
+    }).catchError((e) {});
   }
 
   void updateCovid19(Covid19 covid19) {
