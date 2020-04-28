@@ -1,4 +1,4 @@
-package com.osamtimizer.covid_19_viewer
+package com.osamtimizer.covid19viewer
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity
