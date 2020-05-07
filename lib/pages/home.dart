@@ -61,37 +61,11 @@ class Home extends StatelessWidget {
         controller: pageController,
         children: <Widget>[
           Center(
-            child: Stack(
-              children: <Widget>[
-                NationWide(),
-                Provider.of<TabBarStore>(context).errorMessage == null
-                    ? Text("")
-                    : Center(
-                        child: Container(
-                          padding: EdgeInsets.all(8.0),
-                          child:
-                              Text("エラーが発生しました。通信環境を確認するか、時間を置いてから再度試してみて下さい。"),
-                        ),
-                      ),
-              ],
-            ),
+            child: NationWide(),
           ),
           Center(
-            child: Stack(
-              children: <Widget>[
-                ByPrefecture(),
-                Provider.of<TabBarStore>(context).errorMessage == null
-                    ? Text("")
-                    : Center(
-                        child: Container(
-                          padding: EdgeInsets.all(8.0),
-                          child:
-                              Text("エラーが発生しました。通信環境を確認するか、時間を置いてから再度試してみて下さい。"),
-                        ),
-                      ),
-              ],
-            ),
-          )
+            child: ByPrefecture(),
+          ),
         ],
         onPageChanged: onPageChanged,
       ),

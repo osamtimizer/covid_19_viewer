@@ -6,6 +6,15 @@ class ByPrefecture extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final covid19 = Provider.of<Covid19Store>(context).covid19;
+    final tabBarStore = Provider.of<TabBarStore>(context, listen: false);
+    tabBarStore.addListener(() {
+      if (tabBarStore.errorMessage != null) {
+        final snackBar = SnackBar(
+          content: Text("エラーが発生しました。通信環境を確認するか、時間を置いてから再度試してみて下さい。"),
+        );
+        Scaffold.of(context).showSnackBar(snackBar);
+      }
+    });
     return _body(context, covid19);
   }
 
