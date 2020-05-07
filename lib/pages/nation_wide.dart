@@ -9,6 +9,12 @@ class NationWide extends StatelessWidget {
       if (tabBarStore.errorMessage != null) {
         final snackBar = SnackBar(
           content: Text("エラーが発生しました。通信環境を確認するか、時間を置いてから再度試してみて下さい。"),
+          action: SnackBarAction(
+            label: "閉じる",
+            onPressed: () {
+              tabBarStore.clearError();
+            },
+          ),
         );
         Scaffold.of(context).showSnackBar(snackBar);
       }
